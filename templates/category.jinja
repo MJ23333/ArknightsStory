@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        {# {% match category%}
+        {% when "MAINLINE"%}主线
+        {% when "ACTIVITY"%}活动
+        {% when "MINI_ACTIVITY"%}小活动
+        {% when "NONE"%}其他 #}
+        {# {% else%} #}
+        {{category}}
+        {# {% endmatch%} #}
+    </title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {#
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon"> #}
+</head>
+
+<body>
+    <main>
+        <div class="navbar">
+            <a href="../index.html" class="dropbtn"><i class="fas fa-home"></i></a>
+            <div class="seperator">/</div>
+            <div class="dropdown">
+                {# {% match category%}
+                {% when "MAINLINE"%}
+                <button class="dropbtn">主线</button>
+                {% when "ACTIVITY"%}
+                <button class="dropbtn">活动</button>
+                {% when "MINI_ACTIVITY"%}
+                <button class="dropbtn">小活动</button>
+                {% when "NONE"%}
+                <button class="dropbtn">其他</button>
+                {% else%} #}
+                <button class="dropbtn"><a href="{{category}}.html">{{category}}</a></button>
+                {# {% endmatch%} #}
+                <div class="dropdown-content">
+                    {% for cat in categories%}
+                    <a href="{{cat}}.html">
+                        {# {% match cat%}
+                        {% when "MAINLINE"%}主线
+                        {% when "ACTIVITY"%}活动
+                        {% when "MINI_ACTIVITY"%}小活动
+                        {% when "NONE"%}其他
+                        {% else%} #}
+                        {{cat}}
+                        {# {% endmatch%} #}
+                    </a>
+                    {% endfor%}
+                </div>
+            </div>
+        </div>
+        <div class="storycards">
+            {% for act in activities%}
+            <div class="storycard">
+                <a href="../act/{{act.id}}.html" class="titlehref">{{act.name}}</a>
+            </div>
+            <hr class="hr1" />
+            {% endfor%}
+        </div>
+
+    </main>
+</body>
+
+</html>
