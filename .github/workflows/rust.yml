@@ -24,7 +24,7 @@ jobs:
     - name: clear
       run: |
         cd ./gh-pages
-        rm *
+        git rm -r *
         cd ..
     - uses: actions/checkout@v3
       with: 
