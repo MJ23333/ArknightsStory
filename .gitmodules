@@ -1,0 +1,6 @@
+[submodule "json"]
+	path = json
+	url = https://github.com/050644zf/ArknightsStoryJson.git
+[submodule "ArknightsGameData"]
+	path = ArknightsGameData
+	url = https://github.com/Kengxxiao/ArknightsGameData.git
