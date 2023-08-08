@@ -38,7 +38,6 @@ jobs:
         cargo run
     - name: copy result
       run: |
-        cd ..
         cp ./main/out/* ./gh-pages -r
         cd ./gh-pages
         git config --global user.email mengji233@gmail.com
