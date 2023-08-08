@@ -21,7 +21,11 @@ jobs:
         repository: MJ23333/ArknightsStory
         ref: gh-pages
         path: gh-pages
-        token: ${{ github.token }}
+    - name: clear
+      run: |
+        cd ./gh-pages
+        git rm -r *
+        cd ..
     - uses: actions/checkout@v3
       with: 
         repository: 050644zf/ArknightsStoryJson
@@ -38,7 +42,6 @@ jobs:
         cargo run
     - name: copy result
       run: |
-        cd ..
         cp ./main/out/* ./gh-pages -r
         cd ./gh-pages
         git config --global user.email mengji233@gmail.com
