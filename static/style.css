@@ -269,10 +269,13 @@ span{
         object-fit: scale-down !important;
     }
     .maintext{
-        width: 90%;
+        width: 100vw;
     }
     .storycards{
         width: 80%;
+    }
+    main{
+        font-size: 12px;
     }
 }
 @media (max-width: 1000px) {
