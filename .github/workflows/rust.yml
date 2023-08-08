@@ -1,0 +1,27 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with: 
+        repository: 050644zf/ArknightsStoryJson
+        path: json
+    - uses: actions/checkout@v3
+      with:
+        repository: Kengxxiao/ArknightsGameData
+        path: ArknightsGameData
+    - name: copy file
+      run: cp "ArknightsGameData/zh_CN/gamedata/excel/story_review_table.json" "json/zh_CN/story_review_table.json"
+    - name: Build site
+      run: cargo run
