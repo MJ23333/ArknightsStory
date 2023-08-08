@@ -14,6 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - uses: actions/checkout@v3
       with: 
         repository: 050644zf/ArknightsStoryJson
         path: json
