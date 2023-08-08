@@ -267,7 +267,8 @@ span{
 }
 @media (max-width: 750px) {
     .line .background img ,.image img{
-        width: 70vw;
+        width: 80vw;
+        height: auto;
         margin: 10px 10px 10px 5%;
         object-fit: scale-down !important;
     }
