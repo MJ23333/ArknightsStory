@@ -233,7 +233,7 @@ struct IndexTemplate<'a> {
     categories: &'a Vec<String>,
 }
 fn read_story_reviews() -> StdResult<HashMap<String, Vec<StoryReview>>, Box<dyn Error>> {
-    let data = fs::read_to_string("json/zh_CN/story_review_table.json")?;
+    let data = fs::read_to_string("ArknightsGameData/zh_CN/gamedata/excel/story_review_table.json")?;
     let story_reviews_unparsed: Value = serde_json::from_str(&data)?;
     let mut story_reviews: HashMap<String, Vec<StoryReview>> = HashMap::new();
     for (_, item) in story_reviews_unparsed.as_object().unwrap() {
