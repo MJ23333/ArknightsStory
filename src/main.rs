@@ -324,7 +324,9 @@ fn generate_index(cats: &Vec<String>) {
 }
 fn main() {
     // env::set_var("RUST_BACKTRACE", "1");
-    fs::remove_dir_all("out").unwrap();
+    if fs::metadata("out").is_ok(){
+        fs::remove_dir_all("out").unwrap();
+    }
     let mut story_reviews = read_story_reviews().unwrap();
     for (k, v) in story_reviews.iter_mut() {
         for activity in v {
