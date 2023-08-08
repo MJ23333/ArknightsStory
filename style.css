@@ -231,11 +231,14 @@ span{
     text-decoration: none;
     color: rgb(214, 214, 214);
 }
-.prev{
+.prev,.next{
     flex:1;
 }
+.prev:hover,.next:hover{
+    font-weight: bold;
+
+}
 .next{
-    flex:1;
     text-align: right;
 }
 .storycards{
@@ -288,3 +291,8 @@ span{
         width:90%;
     }
 }
+@media (hover: none) {
+    .dropbtn a{
+        pointer-events: none;
+    }
+  }
