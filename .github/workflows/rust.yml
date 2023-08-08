@@ -21,7 +21,7 @@ jobs:
         repository: MJ23333/ArknightsStory
         ref: gh-pages
         path: gh-pages
-        token: ${{secrets.PAT}}
+        token: ${{secrets.upload}}
     - uses: actions/checkout@v3
       with: 
         repository: 050644zf/ArknightsStoryJson
