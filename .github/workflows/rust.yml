@@ -14,15 +14,35 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        path: main
+    - uses: actions/checkout@v3
+      with:
+        repository: MJ23333/ArknightsStory
+        ref: gh-pages
+        path: gh-pages
+        token: ${{secrets.PAT}}
     - uses: actions/checkout@v3
       with: 
         repository: 050644zf/ArknightsStoryJson
-        path: json
+        path: main/json
     - uses: actions/checkout@v3
       with:
         repository: Kengxxiao/ArknightsGameData
         path: ArknightsGameData
     - name: copy file
-      run: cp "ArknightsGameData/zh_CN/gamedata/excel/story_review_table.json" "json/zh_CN/story_review_table.json"
+      run: cp "ArknightsGameData/zh_CN/gamedata/excel/story_review_table.json" "main/json/zh_CN/story_review_table.json"
     - name: Build site
-      run: cargo run
+      run: |
+        cd main
+        cargo run
+    - name: copy result
+      run: |
+        cd ..
+        cp ./main/out/* ./gh-pages -r
+        cd ./gh-pages
+        git config --global user.email mengji233@gmail.com
+        git config --global user.name update_bot
+        git add -A
+        git commit --allow-empty -m 'Build'
+        git push
