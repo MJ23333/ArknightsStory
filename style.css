@@ -2,7 +2,9 @@ body {
     font-family: trebuchet ms, Tahoma, Verdana, -apple-system, BlinkMacSystemFont, PingFang SC, Hiragino Sans GB, Microsoft Yahei, sans-serif;
     background-color: #151515;
 }
-
+main{
+    display:block;
+}
 .line {
     font-size: 1em;
 }
@@ -58,6 +60,7 @@ body {
 .image img {
     margin: 10px;
     width: 650px;
+    max-width: 90%;
     object-fit: scale-down;
 }
 
@@ -71,7 +74,7 @@ body {
     height: 2em !important;
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 /* .navbarline{
@@ -217,7 +220,7 @@ span{
     outline: 1px solid;
 }
 .prevnext{
-    margin:0 auto;
+    margin:10px auto;
     display: flex;
     width: 40vw;
     justify-content: space-between;
@@ -263,13 +266,15 @@ span{
     /* background-color: #3e8e41; */
 }
 @media (max-width: 750px) {
-    .line .backgrounds img {
-        max-width: 90vw;
+    .line .background img ,.image img{
+        max-width: 70vw;
+        width:auto;
+        height: auto;
         margin: 10px 10px 10px 5%;
         object-fit: scale-down !important;
     }
     .maintext{
-        width: 100vw;
+        width: 90vw;
     }
     .storycards{
         width: 80%;
