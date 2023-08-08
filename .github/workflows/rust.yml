@@ -13,20 +13,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         path: main
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         repository: MJ23333/ArknightsStory
         ref: gh-pages
         path: gh-pages
-        token: ${{secrets.Uploader}}
-    - uses: actions/checkout@v2
+        token: ${{ github.token }}
+    - uses: actions/checkout@v3
       with: 
         repository: 050644zf/ArknightsStoryJson
         path: main/json
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         repository: Kengxxiao/ArknightsGameData
         path: ArknightsGameData
