@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{story.story_detail.story_name}}</title>
-    <link rel="stylesheet" type="text/css" href="../../style.css">
-    <script src="../../leader-line.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="/leader-line.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {#
     <link rel="stylesheet" href="./style.css">
@@ -17,7 +17,7 @@
 <body>
     <main>
         <div class="navbar">
-            <a href="../../index.html" class="dropbtn"><i class="fas fa-home"></i></a>
+            <a href="/index.html" class="dropbtn"><i class="fas fa-home"></i></a>
             <div class="seperator">/</div>
             <div class="dropdown">
                 {# {% match category%}
@@ -30,11 +30,11 @@
                 {% when "NONE"%}
                 <button class="dropbtn">其他</button>
                 {% else%} #}
-                <button class="dropbtn"><a href="../../cat/{{category}}.html">{{category}}</a></button>
+                <button class="dropbtn"><a href="/cat/{{category}}.html" class="hover-underline-animation">{{category}}</a></button>
                 {# {% endmatch%} #}
                 <div class="dropdown-content">
                     {% for cat in categories%}
-                    <a href="../../cat/{{cat}}.html">
+                    <a href="/cat/{{cat}}.html" class="hover-underline-animation">
                         {# {% match cat%} #}
                         {# {% when "MAINLINE"%}主线
                         {% when "ACTIVITY"%}活动
@@ -49,27 +49,27 @@
             </div>
             <div class="seperator">/</div>
             <div class="dropdown">
-                <button class="dropbtn"><a href="../../act/{{activity.id}}.html">{{activity.name}}</a></button>
+                <button class="dropbtn"><a href="/act/{{activity.id}}.html" class="hover-underline-animation">{{activity.name}}</a></button>
                 <div class="dropdown-content">
                     {% for a in activities%}
                     {% if a.id == activity.id%}
-                    <a href="../../act/{{a.id}}.html" class="current">{{a.name}}</a>
+                    <a href="/act/{{a.id}}.html" class="current">{{a.name}}</a>
                     {% else%}
-                    <a href="../../act/{{a.id}}.html">{{a.name}}</a>
+                    <a href="/act/{{a.id}}.html" class="hover-underline-animation">{{a.name}}</a>
                     {% endif%}
                     {% endfor%}
                 </div>
             </div>
             <div class="seperator">/</div>
             <div class="dropdown">
-                <button class="dropbtn"><a href="../../{{story.story_txt}}.html">{{story.story_detail.story_name}}
+                <button class="dropbtn"><a href="/{{story.story_txt}}.html" class="hover-underline-animation">{{story.story_detail.story_name}}
                         {{story.story_detail.avg_tag}}</a></button>
                 <div class="dropdown-content longer">
                     {% for s in stories%}
                     {% if s.story_txt == story.story_txt%}
                     <a class="current">{{story.story_detail.story_name}} {{story.story_detail.avg_tag}}</a>
                     {% else%}
-                    <a href="../../{{s.story_txt}}.html">{{s.story_detail.story_name}} {{s.story_detail.avg_tag}}</a>
+                    <a href="/{{s.story_txt}}.html" class="hover-underline-animation">{{s.story_detail.story_name}} {{s.story_detail.avg_tag}}</a>
                     {% endif%}
                     {% endfor%}
                 </div>
@@ -79,19 +79,19 @@
             <div class="prev">
                 {% match prev%}
                 {% when Some with (prev)%}
-                <a href="../../{{prev.story_txt}}.html"><i class="fas fa-running fa-flip-horizontal"></i>
+                <a href="/{{prev.story_txt}}.html"><i class="fas fa-running fa-flip-horizontal"></i>
                     {{prev.story_detail.story_name}} {{prev.story_detail.avg_tag}}</a>
                 {% else%}
                 {% endmatch%}
             </div>
             <div class="return">
-                返回 <a href="../../act/{{activity.id}}.html"
+                返回 <a href="/act/{{activity.id}}.html"
                     style="font-weight:bold;text-decoration:none">{{activity.name}} </a>
             </div>
             <div class="next">
                 {% match next%}
                 {% when Some with (next)%}
-                <a href="../../{{next.story_txt}}.html">{{next.story_detail.story_name}} {{next.story_detail.avg_tag}}
+                <a href="/{{next.story_txt}}.html">{{next.story_detail.story_name}} {{next.story_detail.avg_tag}}
                     <i class="fas fa-running"></i></a>
                 {% else%}
                 {% endmatch%}
@@ -178,19 +178,19 @@
             <div class="prev">
                 {% match prev%}
                 {% when Some with (prev)%}
-                <a href="../../{{prev.story_txt}}.html"><i class="fas fa-running fa-flip-horizontal"></i>
+                <a href="/{{prev.story_txt}}.html"><i class="fas fa-running fa-flip-horizontal"></i>
                     {{prev.story_detail.story_name}} {{prev.story_detail.avg_tag}}</a>
                 {% else%}
                 {% endmatch%}
             </div>
             <div class="return">
-                返回 <a href="../../act/{{activity.id}}.html"
+                返回 <a href="/act/{{activity.id}}.html"
                     style="font-weight:bold;text-decoration:none">{{activity.name}} </a>
             </div>
             <div class="next">
                 {% match next%}
                 {% when Some with (next)%}
-                <a href="../../{{next.story_txt}}.html">{{next.story_detail.story_name}} {{next.story_detail.avg_tag}}
+                <a href="/{{next.story_txt}}.html">{{next.story_detail.story_name}} {{next.story_detail.avg_tag}}
                     <i class="fas fa-running"></i></a>
                 {% else%}
                 {% endmatch%}
@@ -207,8 +207,8 @@
                 LeaderLine.mouseHoverAnchor({ element: document.querySelector("#line{{id}}_{{loop.index}} span"), style: { backgroundColor: null, backgroundImage: null }, hoverStyle: { backgroundColor: null }, showEffectName: 'draw', animOptions: { duration: 200, timing: [0.58, 0, 0.42, 1] } }),
                 document.querySelector('#{{line}} .references span'),
                 {
-                    color: 'rgb(214,214,214)',
-                    size: 2,
+                    color: 'rgb(176, 15, 1)',
+                    size: 3,
                     dash: true,
                     hide: true,
                     dropShadow: true

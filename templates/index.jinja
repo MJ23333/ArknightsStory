@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>明日方舟剧情回顾站</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {#
     <link rel="stylesheet" href="./style.css">
@@ -17,7 +17,7 @@
         <div class="navbar">
             <a href="../index.html" class="dropbtn"><i class="fas fa-home"></i></a>
         </div>
-        <div class="storycards">
+        <div class="activitycards">
             <div style="line-height:2.5em">
             <h1 class="name">明日方舟剧情回顾站</h1>
             <center>
@@ -30,10 +30,10 @@
             The images and text used in the website are only for better representation of the game data, and their copyright belongs to Shanghai Hypergryph Network Technology Co., Ltd.
             </div>
             {% for cat in categories%}
-            <div class="storycard">
-                <a href="./cat/{{cat}}.html" class="titlehref">{{cat}}</a>
+            <div class="activitycard">
+                <a href="/cat/{{cat}}.html" class="titlehref hover-underline-animation">{{cat}}</a>
             </div>
-            <hr class="hr1" />
+            
             {% endfor%}
         </div>
 

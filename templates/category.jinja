@@ -14,7 +14,7 @@
         {{category}}
         {# {% endmatch%} #}
     </title>
-    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {#
     <link rel="stylesheet" href="./style.css">
@@ -24,7 +24,7 @@
 <body>
     <main>
         <div class="navbar">
-            <a href="../index.html" class="dropbtn"><i class="fas fa-home"></i></a>
+            <a href="/index.html" class="dropbtn"><i class="fas fa-home"></i></a>
             <div class="seperator">/</div>
             <div class="dropdown">
                 {# {% match category%}
@@ -37,11 +37,11 @@
                 {% when "NONE"%}
                 <button class="dropbtn">其他</button>
                 {% else%} #}
-                <button class="dropbtn"><a href="{{category}}.html">{{category}}</a></button>
+                <button class="dropbtn"><a href="/cat/{{category}}.html" class="hover-underline-animation">{{category}}</a></button>
                 {# {% endmatch%} #}
                 <div class="dropdown-content">
                     {% for cat in categories%}
-                    <a href="{{cat}}.html">
+                    <a href="/cat/{{cat}}.html" class="hover-underline-animation">
                         {# {% match cat%}
                         {% when "MAINLINE"%}主线
                         {% when "ACTIVITY"%}活动
@@ -55,12 +55,16 @@
                 </div>
             </div>
         </div>
-        <div class="storycards">
-            {% for act in activities%}
-            <div class="storycard">
-                <a href="../act/{{act.id}}.html" class="titlehref">{{act.name}}</a>
-            </div>
+        <h1 class="name" style="margin-bottom:2em">
+        {{category}}
+        </h1>
+        <div class="activitycards">
             <hr class="hr1" />
+            {% for act in activities%}
+            <div class="activitycard">
+                <a href="/act/{{act.id}}.html" class="titlehref hover-underline-animation">{{act.name}}</a>
+            </div>
+            
             {% endfor%}
         </div>
 
