@@ -54,6 +54,15 @@
                     {% endfor%}
                 </div>
             </div>
+            <div class="seperator">/</div>
+            <div class="dropdown">
+                <button class="dropbtn"><a>请选择故事</a></button>
+                <div class="dropdown-content">
+                    {% for a in activities%}
+                    <a href="/act/{{a.id}}.html" class="hover-underline-animation">{{a.name}}</a>
+                    {% endfor%}
+                </div>
+            </div>
         </div>
         <h1 class="name" style="margin-bottom:2em">
         {{category}}

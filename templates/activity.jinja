@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{activity.name}}</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     {#
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon"> #}
@@ -28,7 +30,8 @@
                 {% when "NONE"%}
                 <button class="dropbtn">其他</button>
                 {% else%} #}
-                <button class="dropbtn"><a href="/cat/{{category}}.html" class="hover-underline-animation">{{category}}</a></button>
+                <button class="dropbtn"><a href="/cat/{{category}}.html"
+                        class="hover-underline-animation">{{category}}</a></button>
                 {# {% endmatch%} #}
                 <div class="dropdown-content">
                     {% for cat in categories%}
@@ -45,9 +48,11 @@
                     {% endfor%}
                 </div>
             </div>
+
             <div class="seperator">/</div>
             <div class="dropdown">
-                <button class="dropbtn"><a href="/act/{{activity.id}}.html" class="hover-underline-animation">{{activity.name}}</a></button>
+                <button class="dropbtn"><a href="/act/{{activity.id}}.html"
+                        class="hover-underline-animation">{{activity.name}}</a></button>
                 <div class="dropdown-content">
                     {% for a in activities%}
                     {% if a.id == activity.id%}
@@ -58,16 +63,26 @@
                     {% endfor%}
                 </div>
             </div>
+            <div class="seperator">/</div>
+            <div class="dropdown">
+                <button class="dropbtn"><a>请选择章节</a></button>
+                <div class="dropdown-content longer">
+                    {% for s in activity.stories%}
+                    <a href="/{{s.story_txt}}.html" class="hover-underline-animation">{{s.story_detail.story_name}} {{s.story_detail.avg_tag}}</a>
+                    {% endfor%}
+                </div>
+            </div>
         </div>
         <h1 class="name">
-        {{activity.name}}
+            {{activity.name}}
         </h1>
         <div class="storycards">
             <hr class="hr1" />
             {% for story in activity.stories%}
             <div class="storycard">
-                <a href="/{{story.story_txt}}.html" class="titlehref hover-underline-animation">{{story.story_detail.story_name}} <div
-                        class="avgtag">{{story.story_detail.avg_tag}}</div></a>
+                <a href="/{{story.story_txt}}.html"
+                    class="titlehref hover-underline-animation">{{story.story_detail.story_name}} <div class="avgtag">
+                        {{story.story_detail.avg_tag}}</div></a>
                 {% match story.story_detail.story_code%}
                 {% when Some with (code)%}
                 <div class="storycode">{{code}}</div>

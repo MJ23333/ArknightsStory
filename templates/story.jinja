@@ -62,8 +62,7 @@
             </div>
             <div class="seperator">/</div>
             <div class="dropdown">
-                <button class="dropbtn"><a href="/{{story.story_txt}}.html" class="hover-underline-animation">{{story.story_detail.story_name}}
-                        {{story.story_detail.avg_tag}}</a></button>
+                <button class="dropbtn"><a href="/{{story.story_txt}}.html" class="hover-underline-animation">{{story.story_detail.story_name}} {{story.story_detail.avg_tag}}</a></button>
                 <div class="dropdown-content longer">
                     {% for s in stories%}
                     {% if s.story_txt == story.story_txt%}
