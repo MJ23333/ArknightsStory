@@ -16,6 +16,18 @@
     <main>
         <div class="navbar">
             <a href="../index.html" class="dropbtn"><i class="fas fa-home"></i></a>
+            <div class="seperator">/</div>
+            <div class="dropdown">
+                <button class="dropbtn"><a>分类</a></button>
+                {# {% endmatch%} #}
+                <div class="dropdown-content">
+                    {% for cat in categories%}
+                    <a href="/cat/{{cat}}.html" class="hover-underline-animation">
+                        {{cat}}
+                    </a>
+                    {% endfor%}
+                </div>
+            </div>
         </div>
         <div class="activitycards">
             <div style="line-height:2.5em">
@@ -26,8 +38,10 @@
             喜欢精致的排版？<br/>
             那你来对地方！<br/>
             </center>
+            <div style="padding:4px;outline:2px solid;margin-top:2em">
             网站内使用的游戏图片和文本原文，仅用于更好地表现游戏资料，其版权属于上海鹰角网络科技有限公司。<br/>
             The images and text used in the website are only for better representation of the game data, and their copyright belongs to Shanghai Hypergryph Network Technology Co., Ltd.
+            </div>
             </div>
             {% for cat in categories%}
             <div class="activitycard">

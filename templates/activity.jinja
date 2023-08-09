@@ -65,7 +65,7 @@
             </div>
             <div class="seperator">/</div>
             <div class="dropdown">
-                <button class="dropbtn"><a>请选择章节</a></button>
+                <button class="dropbtn"><a>章节</a></button>
                 <div class="dropdown-content longer">
                     {% for s in activity.stories%}
                     <a href="/{{s.story_txt}}.html" class="hover-underline-animation">{{s.story_detail.story_name}} {{s.story_detail.avg_tag}}</a>
