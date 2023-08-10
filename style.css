@@ -99,7 +99,7 @@ main{
     display: inline-block;
 }
 
-/* .dropdown-content::-webkit-scrollbar { width: 0 !important } */
+.dropdown-content::-webkit-scrollbar { width: 0 !important }
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
     display: none;
@@ -224,7 +224,7 @@ span{
     font-weight: bold;
     font-size: 1.5em;
     text-decoration: none;
-    flex:2;
+    flex:1;
 }
 .storycard{
     margin-top:20px;
@@ -234,7 +234,7 @@ span{
 }
 .storyinfo{
     color:gray;
-    flex:4;
+    flex:2;
 }
 .return{
     padding: 3px;
@@ -302,7 +302,7 @@ span{
         width: 90vw;
     }
     .storycards{
-        width: 80%;
+        width: 90%;
         font-size: 12px;
     }
     main{
