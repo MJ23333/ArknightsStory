@@ -6,6 +6,8 @@ use std::collections::HashMap;
 use std::error::Error;
 use std::fmt;
 use std::fs;
+use std::path::Path;
+use std::io;
 use std::result::Result as StdResult;
 #[derive(Deserialize, Debug, PartialEq)]
 enum EntryType {
@@ -322,6 +324,18 @@ fn generate_index(cats: &Vec<String>) {
     fs::write(path, hello.render().unwrap().replace("\\n", "<br />"))
         .expect("Unable to write file");
 }
+fn copy_dir_all(src: impl AsRef<Path>, dst: impl AsRef<Path>) -> io::Result<()> {
+    for entry in fs::read_dir(src)? {
+        let entry = entry?;
+        let ty = entry.file_type()?;
+        if ty.is_dir() {
+            copy_dir_all(entry.path(), dst.as_ref().join(entry.file_name()))?;
+        } else {
+            fs::copy(entry.path(), dst.as_ref().join(entry.file_name()))?;
+        }
+    }
+    Ok(())
+}
 fn main() {
     // env::set_var("RUST_BACKTRACE", "1");
     if fs::metadata("out").is_ok(){
@@ -347,7 +361,6 @@ fn main() {
         generate_activities(&v.iter().collect(), &cats);
         generate_stories(&v.iter().collect(), &cats);
     }
-    fs::copy("static/leader-line.min.js", "out/leader-line.min.js").unwrap();
-    fs::copy("static/style.css", "out/style.css").unwrap();
+    copy_dir_all("./static", "./out").unwrap();
     // println!("{:?}",);
 }
