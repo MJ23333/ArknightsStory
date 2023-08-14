@@ -149,7 +149,9 @@
                     <div class="nameblock figure mytooltip tooltip-effect-1">
                     {% match attr.name %}{% when Some with (char_name)%}<span class="tooltip-item">{{char_name}}</span>
                     <span class="tooltip-content clearfix">
+                    {% if fa != ""%}
                     <img src="https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/characters/{{fa}}.png">
+                    {% endif%}
                     <span class="tooltip-text"><a href="https://prts.wiki/index.php?search={{char_name}}">在PRTS搜索</a></span>
                     </span>{% else %}{% endmatch %}
                     </div>
