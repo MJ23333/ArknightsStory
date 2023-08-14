@@ -127,7 +127,9 @@ impl<'de> Deserialize<'de> for StoryLine {
                 id: line_base.id,
                 attributes: DialogueAttributes::deserialize(line_base.attributes)
                     .map_err(serde::de::Error::custom)?,
-                figure_art:encode(line_base.figure_art.unwrap_or("".to_string()).as_str()).into_owned()
+                figure_art:encode(
+                        line_base.figure_art.unwrap_or("".to_string()).clone().as_str()
+                ).into_owned()
             },
             "Sticker" => StoryLine::Text {
                 id: line_base.id,
