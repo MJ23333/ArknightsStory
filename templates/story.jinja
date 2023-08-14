@@ -146,19 +146,14 @@
             {% when Dialogue with {id:id,attributes:attr,figure_art:fa}%}
             <div class="line" id="line{{id}}">
                 <div class="textblock">
-                    <a class="nameblock figure" href="https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/characters/{{fa}}.png" target="_blank" id="nameline{{id}}">{% match attr.name %}
-                        {% when Some with (char_name)%}{{char_name}}{% else %}{% endmatch %}</a>
+                    <div class="nameblock figure mytooltip tooltip-effect-1">
+                    {% match attr.name %}{% when Some with (char_name)%}<span class="tooltip-item">{{char_name}}</span>
+                    <span class="tooltip-content clearfix">
+                    <img src="https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/characters/{{fa}}.png">
+                    <span class="tooltip-text"><a href="https://prts.wiki/index.php?search={{char_name}}">在PRTS搜索</a></span>
+                    </span>{% else %}{% endmatch %}
+                    </div>
                     <div class="contentblock">{{attr.content}}</div>
-                    {# <style>
-                        #nameline{{id}}:hover:after{
-                            content: url(https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/characters/{{fa}}.png); /* no need for qoutes */
-                            display: block;
-                            max-width: 100%;
-                            {# top:200px;
-                            left:400px; #}
-                            position: absolute;
-                        }
-                    </style> #}
                 </div>
             </div>
             {% when Text with {id:id,attributes:attr}%}
