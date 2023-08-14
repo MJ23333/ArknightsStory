@@ -143,12 +143,22 @@
                 {% else%}
                 {% endif%}
             </div>
-            {% when Dialogue with {id:id,attributes:attr}%}
+            {% when Dialogue with {id:id,attributes:attr,figure_art:fa}%}
             <div class="line" id="line{{id}}">
                 <div class="textblock">
-                    <div class="nameblock figure">{% match attr.name %}
-                        {% when Some with (char_name)%}{{char_name}}{% else %}{% endmatch %}</div>
+                    <a class="nameblock figure" href="https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/characters/{{fa}}.png" target="_blank" id="nameline{{id}}">{% match attr.name %}
+                        {% when Some with (char_name)%}{{char_name}}{% else %}{% endmatch %}</a>
                     <div class="contentblock">{{attr.content}}</div>
+                    {# <style>
+                        #nameline{{id}}:hover:after{
+                            content: url(https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/characters/{{fa}}.png); /* no need for qoutes */
+                            display: block;
+                            max-width: 100%;
+                            {# top:200px;
+                            left:400px; #}
+                            position: absolute;
+                        }
+                    </style> #}
                 </div>
             </div>
             {% when Text with {id:id,attributes:attr}%}

@@ -8,6 +8,7 @@ use std::fmt;
 use std::fs;
 use std::path::Path;
 use std::io;
+use urlencoding::encode;
 use std::result::Result as StdResult;
 #[derive(Deserialize, Debug, PartialEq)]
 enum EntryType {
@@ -58,6 +59,7 @@ struct StoryLineBase {
     target_lines: Option<Value>,
     #[serde(rename(deserialize = "endOfOpt"))]
     end_of_opt: Option<bool>,
+    figure_art: Option<String>,
 }
 #[derive(Deserialize, Debug, Default)]
 struct StoryDetail {
@@ -77,6 +79,7 @@ enum StoryLine {
     Dialogue {
         id: i32,
         attributes: DialogueAttributes,
+        figure_art: String
     },
     Text {
         id: i32,
@@ -124,6 +127,7 @@ impl<'de> Deserialize<'de> for StoryLine {
                 id: line_base.id,
                 attributes: DialogueAttributes::deserialize(line_base.attributes)
                     .map_err(serde::de::Error::custom)?,
+                figure_art:encode(line_base.figure_art.unwrap_or("".to_string()).as_str()).into_owned()
             },
             "Sticker" => StoryLine::Text {
                 id: line_base.id,
@@ -237,9 +241,15 @@ struct IndexTemplate<'a> {
 fn read_story_reviews() -> StdResult<HashMap<String, Vec<StoryReview>>, Box<dyn Error>> {
     let data = fs::read_to_string("ArknightsGameData/zh_CN/gamedata/excel/story_review_table.json")?;
     let story_reviews_unparsed: Value = serde_json::from_str(&data)?;
+    let chardict_json=fs::read_to_string("json/zh_CN/chardict.json")?;
+    let chardict:Value=serde_json::from_str(&chardict_json)?;
     let mut story_reviews: HashMap<String, Vec<StoryReview>> = HashMap::new();
     for (_, item) in story_reviews_unparsed.as_object().unwrap() {
-        let story_review: StoryReview = serde_json::from_value(item.clone())?;
+        let mut story_review: StoryReview = serde_json::from_value(item.clone())?;
+        if story_review.entry_type=="NONE"{
+            // println!("{}",story_review.id.split("_").collect::<Vec<&str>>()[1]);
+            story_review.name=chardict[story_review.id.split("_").collect::<Vec<&str>>()[1]]["name"].as_str().unwrap_or("").to_owned()+" - "+story_review.name.as_str();
+        }
         println!("{}", story_review.name);
         if story_reviews.contains_key(&story_review.entry_type) {
             story_reviews
