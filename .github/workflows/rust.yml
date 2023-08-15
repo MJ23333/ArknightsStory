@@ -9,6 +9,13 @@ on:
 env:
   CARGO_TERM_COLOR: always
 
+
+permissions:
+  pull-requests: write
+  issues: write
+  repository-projects: write
+  contents: write
+
 jobs:
   build:
 
